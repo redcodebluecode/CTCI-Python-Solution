@@ -38,4 +38,4 @@ print solution(matrix3)
 print "Expected: [[0, 'b'], [0, 0]]"
 
 print solution(matrix4)
-print "Expected: [[0,0,0,0], [0,0,0,0],[0,0,0,0],[0,0,0,0]]"
+print "Expected: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]"
