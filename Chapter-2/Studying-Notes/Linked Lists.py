@@ -65,6 +65,16 @@ class UnorderedList:
 ## Step 3: Create List operations
 ###########################################
 
+# prl(self): print all the items in the list
+    def prl(self):
+        if self.head == None:
+            print "Empty"
+        else:
+            current = self.head
+            while current != None:
+                print current.getData()
+                current = current.getNext()
+
 # isEmpty(): tests to see whether the list is empty. It needs no parameters and returns a boolean value.
     def isEmpty(self):
         return self.head == None
@@ -126,11 +136,64 @@ class UnorderedList:
             else:
                 current = current.getNext()
 
-# insert
+# insert(pos,item): adds a new item to the list at position pos. It needs the item and returns nothing. Assume the item is not already in the list and there are enough existing items to have position pos.
+    def insert(self, item, pos):
+        ind = 0
+        temp = Node(item)
+        previous = None
+        current = self.head
+        if pos == 0:
+            temp.setNext(self.head)
+            self.head = temp
+        else:
+            while ind < pos:
+                ind += 1
+                previous = current
+                current = current.getNext()
+            temp.setNext(current)
+            previous.setNext(temp)
+       
+# index(self, item): returns the position of item in the list. It needs the item and returns the index. Assume the item is in the list.
+    def index(self, item):
+        ind = 0
+        current = self.head
+        found = False
+        while not found:
+            if current.getData() == item:
+                found = True
+                return ind
+            else:
+                current = current.getNext()
+                ind += 1
 
-# index
-
-# pop
+# pop(self): removes and returns the last item in the list. It needs nothing and returns an item. Assume the list has at least one item.
+    def pop(self):
+        current = self.head
+        previous = None
+        if current.getNext() == None:
+            self.head = None
+        else:
+            while current.getNext() != None:
+                previous = current
+                current = current.getNext()
+            previous.setNext(None)
+        return current.getData()
+        
+# poppos(self, pos): removes and returns the item at position pos. It needs the position and returns the item. Assume the item is in the list.
+    def poppos(self, pos):
+        ind = 0
+        current = self.head
+        previous = None
+        if pos == 0:
+            self.head = current.getNext()
+        else:
+            while ind < pos:
+                ind += 1
+                previous = current
+                current = current.getNext()
+            previous.setNext(current.getNext())
+        return current.getData()
+        
 #################################
 ## Test
 #################################
@@ -150,6 +213,7 @@ mylist.add(35)
 mylist.add(99)
 mylist.add(12)
 mylist.add(49)
+mylist.prl()
 
 print "Test whether the list is empty:", mylist.isEmpty()
 
@@ -161,24 +225,47 @@ print(mylist.search(18))
 
 print "Remove an item:"
 print(mylist.size())
-mylist.remove(16)
-print(mylist.size())
+mylist.prl()
 mylist.remove(99)
-print(mylist.size())
-mylist.remove(35)
-print(mylist.size())
 print(mylist.search(99))
+print(mylist.size())
+mylist.prl()
 
 print "Append an item to a non-empty list:"
 print mylist.isEmpty()
-print mylist.size()
+mylist.prl()
 mylist.append(100)
 print mylist.size()
+mylist.prl()
 
 print "Append an item to an empty list:"
 mylist2 = UnorderedList()
 print mylist2.isEmpty()
-print mylist2.size()
+mylist.prl()
 mylist2.append(101)
 print mylist2.isEmpty()
-print mylist2.size()
+mylist.prl()
+
+print "Insert an item at a designated position:"
+print "Before insertion:"
+mylist.prl()
+mylist.insert(0, 0)
+mylist.insert(1, 1)
+print "After insertion:"
+mylist.prl()
+
+print "Find the index of an item in the list:"
+print mylist.index(0)
+print mylist.index(1)
+print mylist.index(100)
+
+print "Pop the last item in the list:"
+mylist.prl()
+mylist.pop()
+mylist.prl()
+
+print "Pop an item at a designated position:"
+mylist.prl()
+mylist.poppos(0)
+mylist.poppos(1)
+mylist.prl()
