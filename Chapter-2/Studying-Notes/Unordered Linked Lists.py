@@ -6,6 +6,8 @@ The structure of an unordered list is a collection of items where each item hold
 
 List() creates a new list that is empty. It needs no parameters and returns an empty list.
 
+prl() print all the items in the list. It needs no parameters and prints all the items in the list. If the list is empty, it will print "Empty".
+
 add(item) adds a new item to the list. It needs the item and returns nothing. Assume the item is not already in the list.
 
 remove(item) removes the item from the list. It needs the item and modifies the list. Assume the item is present in the list.
