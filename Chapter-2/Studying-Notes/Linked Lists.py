@@ -1,5 +1,7 @@
 """
 The Unordered List Abstract Data Type
+Source: http://interactivepython.org/courselib/static/pythonds/BasicDS/linkedlists.html
+
 The structure of an unordered list is a collection of items where each item holds a relative position with respect to the others. Some possible unordered list operations are given below.
 
 List() creates a new list that is empty. It needs no parameters and returns an empty list.
