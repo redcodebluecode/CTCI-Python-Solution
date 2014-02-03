@@ -17,13 +17,14 @@ def dedup3(mylist):
     for element in mylist:
         if element not in newlist:
             newlist.append(element)
-
+    print newlist
+    
 # Test
 testlist = [2, 4, 1, 3, 2, 3, 4, 5, 3]
 
 dedup1(testlist)
-print "Expected: [1,2,3,4,5]"
+print "Expected: [1, 2, 3, 4, 5]"
 dedup2(testlist)
-print "Expected: [1,2,3,4,5]"
+print "Expected: [1, 2, 3, 4, 5]"
 dedup3(testlist)
-print "Expected: [1,2,3,4,5]"
+print "Expected: [2, 4, 1, 3, 5]"
