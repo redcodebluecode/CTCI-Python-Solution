@@ -25,7 +25,6 @@ pop() removes and returns the last item in the list. It needs nothing and return
 pop(pos) removes and returns the item at position pos. It needs the position and returns the item. Assume the item is in the list.
 """
 
-
 ##################################
 ## Step 1: Create a Node class
 ##################################
@@ -61,7 +60,7 @@ class UnorderedList:
 
     def __init__(self):
         self.head = None
- 
+
 ###########################################
 ## Step 3: Create List operations
 ###########################################
@@ -107,7 +106,6 @@ class UnorderedList:
             else:
                 previous = current
                 current = current.getNext()
-
         if previous == None:
             self.head = current.getNext()
         else:
@@ -137,17 +135,16 @@ print "Test whether the list is empty:", mylist.isEmpty()
 
 print "Returns the number of items in the list", mylist.size()
 
+print "Search whether an item is in the list:"
 print(mylist.search(99))
 print(mylist.search(18))
 
-mylist.add(100)
-print(mylist.search(100))
+print "Remove an item:"
 print(mylist.size())
-
-mylist.remove(54)
+mylist.remove(16)
 print(mylist.size())
-mylist.remove(93)
+mylist.remove(99)
 print(mylist.size())
-mylist.remove(31)
+mylist.remove(35)
 print(mylist.size())
-print(mylist.search(93))
+print(mylist.search(99))
