@@ -70,7 +70,7 @@ class UnorderedList:
         return self.head == None
 
 # add(item): adds a new item to the list. It needs the item and returns nothing. Assume the item is not already in the list.
-    def add(self,item):
+    def add(self, item):
         temp = Node(item)
         temp.setNext(self.head)
         self.head = temp
@@ -110,7 +110,27 @@ class UnorderedList:
             self.head = current.getNext()
         else:
             previous.setNext(current.getNext())
+            
+# append(item): adds a new item to the end of the list making it the last item in the collection. It needs the item and returns nothing. Assume the item is not already in the list.
+    def append(self, item):
+        current = self.head
+        found = False
+        temp = Node(item)
+        while not found:
+            if self.head == None:
+                found = True
+                self.head = temp
+            elif (self.head != None) & (current.getNext() == None):
+                found = True
+                current.setNext(temp)
+            else:
+                current = current.getNext()
 
+# insert
+
+# index
+
+# pop
 #################################
 ## Test
 #################################
@@ -148,3 +168,17 @@ print(mylist.size())
 mylist.remove(35)
 print(mylist.size())
 print(mylist.search(99))
+
+print "Append an item to a non-empty list:"
+print mylist.isEmpty()
+print mylist.size()
+mylist.append(100)
+print mylist.size()
+
+print "Append an item to an empty list:"
+mylist2 = UnorderedList()
+print mylist2.isEmpty()
+print mylist2.size()
+mylist2.append(101)
+print mylist2.isEmpty()
+print mylist2.size()
