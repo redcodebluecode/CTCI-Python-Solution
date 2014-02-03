@@ -64,16 +64,29 @@ class OrderedList:
 ## Step 3: Create List operations
 ###########################################
 # add(item): adds a new item to the list. It needs the item and returns nothing. Assume the item is not already in the list.
-    def add(self, item):
+    def add(self,item):
+        current = self.head
+        previous = None
+        stop = False
+        while current != None and not stop:
+            if current.getData() > item:
+                stop = True
+            else:
+                previous = current
+                current = current.getNext()
         temp = Node(item)
-        temp.setNext(self.head)
-        self.head = temp
-
+        if previous == None:
+            temp.setNext(self.head)
+            self.head = temp
+        else:
+            temp.setNext(current)
+            previous.setNext(temp)
+                
 # search(self, item): searches for the item in the list. It needs the item and returns a boolean value.
     def search(self, item):
         current = self.head
         found = False
-        while current != None and not found:
+        while current != None and not found and current.getData() <= item:
             if current.getData() == item:
                 found = True
             else:
@@ -182,13 +195,13 @@ mylist.add(12)
 mylist.add(49)
 mylist.prl()
 
-print "Test whether the list is empty:", mylist.isEmpty()
-
-print "Returns the number of items in the list", mylist.size()
-
 print "Search whether an item is in the list:"
 print(mylist.search(99))
 print(mylist.search(18))
+
+print "Test whether the list is empty:", mylist.isEmpty()
+
+print "Returns the number of items in the list", mylist.size()
 
 print "Remove an item:"
 print(mylist.size())
@@ -199,9 +212,8 @@ print(mylist.size())
 mylist.prl()
 
 print "Find the index of an item in the list:"
-print mylist.index(0)
-print mylist.index(1)
-print mylist.index(100)
+print mylist.index(35)
+print mylist.index(12)
 
 print "Pop the last item in the list:"
 mylist.prl()
