@@ -25,9 +25,11 @@ pop() removes and returns the last item in the list. It needs nothing and return
 pop(pos) removes and returns the item at position pos. It needs the position and returns the item. Assume the item is in the list.
 """
 
+
 ##################################
 ## Step 1: Create a Node class
 ##################################
+
 class Node:
     def __init__(self, initdata):
         self.data = initdata
@@ -46,9 +48,10 @@ class Node:
         self.next = newnext
 
 print "Test Step 1:"
-print "Create a new Node and get its data:"
 testnode = Node(17)
+print "Create a new Node and get its data:", 
 print testnode.getData()
+print ""
 
 ##########################################
 ## Step 2: Create an Unordered List class
@@ -63,25 +66,27 @@ class UnorderedList:
 ## Step 3: Create List operations
 ###########################################
 
-# isEmpty()
+# isEmpty(): tests to see whether the list is empty. It needs no parameters and returns a boolean value.
     def isEmpty(self):
         return self.head == None
 
+# add(item): adds a new item to the list. It needs the item and returns nothing. Assume the item is not already in the list.
     def add(self,item):
         temp = Node(item)
         temp.setNext(self.head)
         self.head = temp
 
+# size(): returns the number of items in the list. It needs no parameters and returns an integer.
     def size(self):
         current = self.head
         count = 0
         while current != None:
             count = count + 1
             current = current.getNext()
-
         return count
 
-    def search(self,item):
+# search(self, item): searches for the item in the list. It needs the item and returns a boolean value.
+    def search(self, item):
         current = self.head
         found = False
         while current != None and not found:
@@ -89,10 +94,10 @@ class UnorderedList:
                 found = True
             else:
                 current = current.getNext()
-
         return found
 
-    def remove(self,item):
+# remove(self, item): removes the item from the list. It needs the item and modifies the list. Assume the item is present in the list.
+    def remove(self, item):
         current = self.head
         previous = None
         found = False
@@ -111,26 +116,29 @@ class UnorderedList:
 #################################
 ## Test
 #################################
+
 print "Test Step 2:"
 print "Create a new unorderedlist:"
 mylist = UnorderedList()
+print ""
 
 print "Test Step 3:"
 print "Test whether the list is empty:", mylist.isEmpty()
 
 print "Add items to the list:"
-mylist.add(31)
-mylist.add(77)
-mylist.add(17)
-mylist.add(93)
+mylist.add(16)
 mylist.add(26)
-mylist.add(54)
+mylist.add(35)
+mylist.add(99)
+mylist.add(12)
+mylist.add(49)
 
 print "Test whether the list is empty:", mylist.isEmpty()
 
-print(mylist.size())
-print(mylist.search(93))
-print(mylist.search(100))
+print "Returns the number of items in the list", mylist.size()
+
+print(mylist.search(99))
+print(mylist.search(18))
 
 mylist.add(100)
 print(mylist.search(100))
@@ -143,4 +151,3 @@ print(mylist.size())
 mylist.remove(31)
 print(mylist.size())
 print(mylist.search(93))
-        
