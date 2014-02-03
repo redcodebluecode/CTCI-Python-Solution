@@ -1,5 +1,7 @@
 """
 The Ordered List Abstract Data Type
+Source: http://interactivepython.org/runestone/static/pythonds/BasicDS/linkedlists.html#the-ordered-list-abstract-data-type
+
 The structure of an ordered list is a collection of items where each item holds a relative position with respect to the others. Some possible ordered list operations are given below. As we consider the operations for the ordered list, we should note that some methods can be implemented the same as with unordered lists since they deal only with the number of nodes in the list without regard to the actual item values. 
 
 List() creates a new list that is empty. It needs no parameters and returns an empty list.
