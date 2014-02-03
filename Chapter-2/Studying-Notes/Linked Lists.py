@@ -25,7 +25,9 @@ pop() removes and returns the last item in the list. It needs nothing and return
 pop(pos) removes and returns the item at position pos. It needs the position and returns the item. Assume the item is in the list.
 """
 
-# Step 1: Create a Node class
+##################################
+## Step 1: Create a Node class
+##################################
 class Node:
     def __init__(self, initdata):
         self.data = initdata
@@ -48,9 +50,97 @@ print "Create a new Node and get its data:"
 testnode = Node(17)
 print testnode.getData()
 
-# Step 2: Create an Unordered List class
+##########################################
+## Step 2: Create an Unordered List class
+##########################################
 
 class UnorderedList:
+
     def __init__(self):
         self.head = None
+
+###########################################
+## Step 3: Create List operations
+###########################################
+
+# isEmpty()
+    def isEmpty(self):
+        return self.head == None
+
+    def add(self,item):
+        temp = Node(item)
+        temp.setNext(self.head)
+        self.head = temp
+
+    def size(self):
+        current = self.head
+        count = 0
+        while current != None:
+            count = count + 1
+            current = current.getNext()
+
+        return count
+
+    def search(self,item):
+        current = self.head
+        found = False
+        while current != None and not found:
+            if current.getData() == item:
+                found = True
+            else:
+                current = current.getNext()
+
+        return found
+
+    def remove(self,item):
+        current = self.head
+        previous = None
+        found = False
+        while not found:
+            if current.getData() == item:
+                found = True
+            else:
+                previous = current
+                current = current.getNext()
+
+        if previous == None:
+            self.head = current.getNext()
+        else:
+            previous.setNext(current.getNext())
+
+#################################
+## Test
+#################################
+print "Test Step 2:"
+print "Create a new unorderedlist:"
+mylist = UnorderedList()
+
+print "Test Step 3:"
+print "Test whether the list is empty:", mylist.isEmpty()
+
+print "Add items to the list:"
+mylist.add(31)
+mylist.add(77)
+mylist.add(17)
+mylist.add(93)
+mylist.add(26)
+mylist.add(54)
+
+print "Test whether the list is empty:", mylist.isEmpty()
+
+print(mylist.size())
+print(mylist.search(93))
+print(mylist.search(100))
+
+mylist.add(100)
+print(mylist.search(100))
+print(mylist.size())
+
+mylist.remove(54)
+print(mylist.size())
+mylist.remove(93)
+print(mylist.size())
+mylist.remove(31)
+print(mylist.size())
+print(mylist.search(93))
         
