@@ -1,5 +1,5 @@
-# Solution 2.1.1
-# There is bug to be fixed. Remove the hash tags in the test part, and you will see the bugs.
+# Solution 2.1.2
+
 # Create a Node class
 class Node:
     def __init__(self, initdata):
@@ -34,6 +34,15 @@ class UnorderedList:
                 print current.getData()
                 current = current.getNext()
 
+# size(self): gives the size of the list, or the number of elements in the list.
+    def size(self):
+        counter = 0
+        current = self.head
+        while current != None:
+            counter += 1
+            current = current.getNext()
+        return counter
+        
 # add(self, item): adds an item to the start of the list.
     def add(self, item):
         temp = Node(item)
@@ -46,15 +55,19 @@ class UnorderedList:
         current = self.head
         previous = None
         while current != None:
-            if current.getData() not in temp:
+            if previous == None:
                 temp.append(current.getData())
                 previous = current
                 current = current.getNext()
-            else:
-                previous.setNext(current.getNext())
-                current = previous
-        
-            TBD
+            elif (current.getData() in temp) and (previous != None):    
+                current = current.getNext()
+            elif (current.getData() not in temp) and (previous != None):
+                temp.append(current.getData())
+                previous.setNext(current)
+                previous = current
+                current = current.getNext()
+        if current == None:
+            previous.setNext(current)
 
 ############################################
 ## Test
@@ -62,18 +75,15 @@ class UnorderedList:
 
 mylist = UnorderedList()
 mylist.add(1)
-# mylist.add(1)
-mylist.add(2)
-# mylist.add(2)
-mylist.add(3)
-# mylist.add(3)
-mylist.add(4)
 mylist.add(2)
 mylist.add(3)
 mylist.add(4)
-mylist.add(3)
+mylist.add(5)
+mylist.add(1)
+mylist.add(5)
+mylist.add(23)
 mylist.add(4)
-mylist.add(4)
+
 print "Before deduplication:"
 print "List size:", mylist.size()
 print "Print elements in the list:"
