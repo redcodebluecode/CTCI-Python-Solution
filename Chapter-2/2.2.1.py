@@ -47,8 +47,7 @@ class UnorderedList:
             print current.getData()
             current = current.getNext()
             
-# lastnth(): finds the nth element  to last element of a singly linked list, and returns it.
-#2 Bugs
+# lastnth(): finds the nth element to last element of a singly linked list, and returns it.
     def lastnth(self, k):
         index = self.head
         current = index
@@ -59,7 +58,7 @@ class UnorderedList:
                 current = current.getNext()
                 counter -= 1
             if current.getNext() == None:
-                return index.getNext.getData()
+                return index.getNext().getData()
             else:
                 index = index.getNext()
             #print index.getData(), current.getData()
