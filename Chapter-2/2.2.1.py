@@ -48,11 +48,43 @@ class UnorderedList:
             current = current.getNext()
             
 # lastnth(): finds the nth element  to last element of a singly linked list, and returns it.
+#2 Bugs
     def lastnth(self, k):
-        current = self.head
-        previous = None
-        counter = 0
-        while counter < k:
-        
-        TBD
+        index = self.head
+        current = index
+        while current.getNext() != None:
+            counter = k
+            current = index
+            while counter != 0:
+                current = current.getNext()
+                counter -= 1
+            if current.getNext() == None:
+                return index.getNext.getData()
+            else:
+                index = index.getNext()
+            #print index.getData(), current.getData()
             
+############################################
+## Test
+############################################
+
+mylist = UnorderedList()
+mylist.add(1)
+
+mylist.add(2)
+mylist.add(3)
+mylist.add(4)
+mylist.add(5)
+
+print "List size:", mylist.size()
+print "Print elements in the list:"
+mylist.prl()
+print mylist.lastnth(1)
+
+print mylist.lastnth(2)
+"""
+print mylist.lastnth(3)
+print mylist.lastnth(4)
+"""
+print mylist.lastnth(5)
+
